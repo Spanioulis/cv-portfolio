@@ -1,0 +1,48 @@
+---
+import { basics } from '@cv';
+import Section from '@/components/Section.astro';
+
+const { email, image, label, location, name, profiles, phone, url } = basics;
+const { city, region } = location;
+---
+
+<Section>
+    <div class="container">
+        <h1>{name}</h1>
+        <h2>{label}</h2>
+        <span>
+            <!-- Iconos -->
+            {city}
+            {region}
+        </span>
+        <footer>
+            {
+                email && (
+                    <a
+                        href={`mailto:${email}`}
+                        target="_blank"
+                        title={`Enviar un correo electrónico a ${name} al correo ${email}`}
+                        rel="noreferrer"
+                    >
+                        📭 {email}
+                    </a>
+                )
+            }
+        </footer>
+        <figure>
+            <img class="image" src=`${image}` width="150px" alt="Fotografía Sergio Paniagua Sánchez" />
+        </figure>
+    </div>
+</Section>
+
+<style>
+    .container {
+        background-color: whitesmoke;
+        height: auto;
+        color: purple;
+    }
+
+    .image {
+        border-radius: 10px;
+    }
+</style>
